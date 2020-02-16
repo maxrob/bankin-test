@@ -1,4 +1,4 @@
-# bankin-test
+# Test Bankin'
 
 Command to launch test: 
 

@@ -5,19 +5,19 @@ const REFRESH_TOKEN = "oa_sand_gHJC17S9MK-pW9K4JlZCea7yx9HRAn9rfc-S89-pT_0";
 
 const get_revolut_accounts = async () => {
   const jwt_token = revolut.get_jwt_token(CLIENT_ID);
-  var {status, data: {access_token: access_token}} = await revolut.get_access_token(
+  let {status: access_token_status, data: {access_token: access_token}} = await revolut.get_access_token(
     REFRESH_TOKEN,
     CLIENT_ID,
     jwt_token
   );
-  if (status != 200) {
+  if (access_token_status != 200) {
     throw new Error(
       "Une erreur est survenue durant la récupération de l'access token"
     );
   }
 
-  var {status, data: accounts} = await revolut.get_accounts(access_token);
-  if (status != 200) {
+  let {status: accounts_status, data: accounts} = await revolut.get_accounts(access_token);
+  if (accounts_status != 200) {
     throw new Error(
       "Une erreur est survenue durant la récupération de la liste des comptes"
     );

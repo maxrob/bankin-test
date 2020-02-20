@@ -19,7 +19,7 @@ const get_jwt_token = (client_id) => {
 }
 
 const get_access_token = (refresh_token, client_id, token) => {
-    request_body = {
+    const request_body = {
         grant_type: "refresh_token",
         refresh_token: refresh_token,
         client_id: client_id,
